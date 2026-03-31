@@ -1270,29 +1270,10 @@
             animation: spin 4s linear infinite;
         }
 
-        #m-msg {
-            position: fixed;
-            bottom: 5.5rem;
-            right: 2.2rem;
-            background: #fff;
-            color: var(--rose);
-            padding: .6rem 1.2rem;
-            border-radius: 20px;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(201, 84, 106, .2);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all .4s ease;
-            pointer-events: none;
-            z-index: 997;
-            border: 1px solid var(--petal);
-            white-space: nowrap;
-        }
-
-        #m-msg.show {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* ══ RESPONSIVE MOBILE ══ */
@@ -1751,11 +1732,10 @@
     <footer>
         Made with every heartbeat by <strong>Wangbu Tamang</strong> 🌹<br>
         For the most wonderful girl in the world — <strong>Nupur Khadgi</strong> 🌸<br>
-        <span style="font-size:.8rem;margin-top:.4rem;display:block;">April 1st, 2025 · Happy 23rd Birthday 💗</span>
+        <span style="font-size:.8rem;margin-top:.4rem;display:block;">April 1st, 2026 · Happy 24rd Birthday 💗</span>
     </footer>
 
     <button id="mb" title="Toggle music">🎵</button>
-    <div id="m-msg">Happy Birthday dear Nupur! 🌸</div>
 
     <script>
         /* ── CURSOR ── */
@@ -1905,41 +1885,13 @@
 
         /* ── MUSIC ── */
         let aC = null, mOn = false, mInt = null, nIdx = 0;
-        // Happy Birthday Melody Frequencies
-        const mel = [
-            523.25, 523.25, 587.33, 523.25, 698.46, 659.25, // Happy birthday to you
-            523.25, 523.25, 587.33, 523.25, 783.99, 698.46, // Happy birthday to you
-            523.25, 523.25, 1046.50, 880.00, 698.46, 659.25, 587.33, // Happy birthday dear Nupur
-            932.33, 932.33, 880.00, 698.46, 783.99, 698.46  // Happy birthday to you
-        ];
-        function playN(f) {
-            if (!aC) return;
-            const o = aC.createOscillator(), gn = aC.createGain();
-            o.connect(gn); gn.connect(aC.destination);
-            o.type = 'sine';
-            o.frequency.setValueAtTime(f, aC.currentTime);
-            gn.gain.setValueAtTime(0, aC.currentTime);
-            gn.gain.linearRampToValueAtTime(.08, aC.currentTime + .05);
-            gn.gain.exponentialRampToValueAtTime(.001, aC.currentTime + 1.1);
-            o.start(aC.currentTime); o.stop(aC.currentTime + 1.1);
-        }
+        const mel = [523, 587, 659, 698, 784, 698, 659, 587, 523, 494, 440, 494, 523];
+        function playN(f) { if (!aC) return; const o = aC.createOscillator(), gn = aC.createGain(); o.connect(gn); gn.connect(aC.destination); o.type = 'sine'; o.frequency.setValueAtTime(f, aC.currentTime); gn.gain.setValueAtTime(0, aC.currentTime); gn.gain.linearRampToValueAtTime(.09, aC.currentTime + .06); gn.gain.exponentialRampToValueAtTime(.001, aC.currentTime + 1.2); o.start(aC.currentTime); o.stop(aC.currentTime + 1.2); }
         document.getElementById('mb').addEventListener('click', () => {
             if (!aC) aC = new (window.AudioContext || window.webkitAudioContext)();
-            mOn = !mOn;
-            const b = document.getElementById('mb');
-            const msg = document.getElementById('m-msg');
-            if (mOn) {
-                b.classList.add('on');
-                msg.classList.add('show');
-                mInt = setInterval(() => {
-                    playN(mel[nIdx % mel.length]);
-                    nIdx++;
-                }, 650);
-            } else {
-                b.classList.remove('on');
-                msg.classList.remove('show');
-                clearInterval(mInt);
-            }
+            mOn = !mOn; const b = document.getElementById('mb');
+            if (mOn) { b.classList.add('on'); mInt = setInterval(() => { playN(mel[nIdx % mel.length]); nIdx++; }, 680); }
+            else { b.classList.remove('on'); clearInterval(mInt); }
         });
     </script>
 </body>
