@@ -1278,31 +1278,127 @@
 
         /* ══ RESPONSIVE MOBILE ══ */
         @media (max-width: 600px) {
-            .sec-inner { padding: 4rem 1.2rem; }
-            #nav { right: 0.5rem; }
-            .hero-name { font-size: clamp(3rem, 15vw, 4.5rem); }
-            .rose-float { width: 70px !important; top: 4%; right: 2%; }
-            .rose-float2 { width: 60px !important; bottom: 4%; left: 2%; }
-            .c1 { width: 140px; height: 40px; }
-            .c2 { width: 180px; height: 50px; }
-            .c3 { width: 220px; height: 60px; }
-            .cake-deco { font-size: 0.85rem; bottom: 8px; }
-            .candles-row { gap: 8px; top: -35px; }
-            .cb { width: 10px; height: 30px; }
-            .cf { transform: scale(0.8); margin-bottom: 0px; }
-            .sorry-card { padding: 1.6rem 1.2rem; border-radius: 14px; }
-            .sorry-card::before { width: 4px; border-radius: 14px 0 0 14px; }
-            .promise-list li { font-size: 0.85rem; }
-            .env-letter { padding: 1.5rem 1rem; }
-            .env-letter.open { transform: translateY(-38%); }
-            .let-head { font-size: 1.4rem; }
-            .let-body { font-size: 0.85rem; line-height: 1.5; }
-            .sbtn { width: 55px; height: 55px; font-size: 2rem; }
-            .cd-box { padding: 1rem 1.2rem; min-width: 80px; }
-            .cd-n { font-size: 2.2rem; }
-            .tli, .tli:nth-child(even) { padding-left: 3.2rem; transform: none !important; }
-            .tldot { width: 12px; height: 12px; left: 18px; margin-top: 1.8rem; }
-            .timeline::before { left: 24px; }
+            .sec-inner {
+                padding: 4rem 1.2rem;
+            }
+
+            #nav {
+                right: 0.5rem;
+            }
+
+            .hero-name {
+                font-size: clamp(3rem, 15vw, 4.5rem);
+            }
+
+            .rose-float {
+                width: 70px !important;
+                top: 4%;
+                right: 2%;
+            }
+
+            .rose-float2 {
+                width: 60px !important;
+                bottom: 4%;
+                left: 2%;
+            }
+
+            .c1 {
+                width: 140px;
+                height: 40px;
+            }
+
+            .c2 {
+                width: 180px;
+                height: 50px;
+            }
+
+            .c3 {
+                width: 220px;
+                height: 60px;
+            }
+
+            .cake-deco {
+                font-size: 0.85rem;
+                bottom: 8px;
+            }
+
+            .candles-row {
+                gap: 8px;
+                top: -35px;
+            }
+
+            .cb {
+                width: 10px;
+                height: 30px;
+            }
+
+            .cf {
+                transform: scale(0.8);
+                margin-bottom: 0px;
+            }
+
+            .sorry-card {
+                padding: 1.6rem 1.2rem;
+                border-radius: 14px;
+            }
+
+            .sorry-card::before {
+                width: 4px;
+                border-radius: 14px 0 0 14px;
+            }
+
+            .promise-list li {
+                font-size: 0.85rem;
+            }
+
+            .env-letter {
+                padding: 1.5rem 1rem;
+            }
+
+            .env-letter.open {
+                transform: translateY(-38%);
+            }
+
+            .let-head {
+                font-size: 1.4rem;
+            }
+
+            .let-body {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .sbtn {
+                width: 55px;
+                height: 55px;
+                font-size: 2rem;
+            }
+
+            .cd-box {
+                padding: 1rem 1.2rem;
+                min-width: 80px;
+            }
+
+            .cd-n {
+                font-size: 2.2rem;
+            }
+
+            .tli,
+            .tli:nth-child(even) {
+                padding-left: 3.2rem;
+                transform: none !important;
+            }
+
+            .tldot {
+                width: 12px;
+                height: 12px;
+                left: 18px;
+                margin-top: 1.8rem;
+            }
+
+            .timeline::before {
+                left: 24px;
+            }
         }
     </style>
 </head>
@@ -1388,7 +1484,7 @@
         <p class="hero-from">From Wangbu, with all his love</p>
         <p class="hero-to">To the most wonderful girl in the world —</p>
         <h1 class="hero-name">Nupur<br><span>Khadgi</span></h1>
-        <p class="hero-date">April 1st · Born 2002 · Turning 23 🌸</p>
+        <p class="hero-date">April 1st · Born 2002 · Turning 24 🌸</p>
         <p class="hero-sub">Today the whole universe pauses just for you</p>
         <button class="hero-cta" onclick="burst()">Celebrate with me ✨</button>
         <div class="scroll-arrow">scroll</div>
@@ -1754,16 +1850,16 @@
         const pf = document.getElementById('pf'), pb2 = document.getElementById('pb2'), bp = document.getElementById('bp');
         function renderPage(i) {
             const p = pages[i], np = pages[(i + 1) % pages.length];
-            
+
             const pImg = p.i ? `<img src="${p.i}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.25; pointer-events:none;">` : '';
             const npImg = np.i ? `<img src="${np.i}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.25; pointer-events:none;">` : '';
 
-            pf.style.background = p.bg; 
+            pf.style.background = p.bg;
             pf.innerHTML = `${pImg}<div class="pe" style="position:relative; z-index:1;">${p.e}</div><div class="pt" style="color:${p.c}; position:relative; z-index:1;">${p.t}</div><div class="px" style="color:${p.c}; position:relative; z-index:1;">${p.x}</div>`;
-            
-            pb2.style.background = np.bg; 
+
+            pb2.style.background = np.bg;
             pb2.innerHTML = `${npImg}<div class="pe" style="position:relative; z-index:1;">${np.e}</div><div class="pt" style="color:${np.c}; position:relative; z-index:1;">${np.t}</div><div class="px" style="color:${np.c}; position:relative; z-index:1;">${np.x}</div>`;
-            
+
             document.getElementById('fc').textContent = `${i + 1} / ${pages.length}`;
         }
         renderPage(0);
